@@ -5,11 +5,15 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
-
+var PostSchema = require('../models/Posts.js');
+var CommentSchema = require('../models/Comments.js');
 var mongoose = require('mongoose');
-var Post = require('../models/Posts');  //changed to require
-var Comment = require('../models/Comments');
+var Post = mongoose.model('Post');
+var Comment = mongoose.model('Comment');
+
+// var mongoose = require('mongoose');
+// var Post = require('../models/Posts');  //changed to require
+// var Comment = require('../models/Comments');
 
 router.get('/posts', function(req, res, next) {
   Post.find(function(err, posts){
