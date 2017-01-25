@@ -1,19 +1,23 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 var PostSchema = require('../models/Posts.js');
 var CommentSchema = require('../models/Comments.js');
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var Comment = mongoose.model('Comment');
+mongoose.Promise = global.Promise;
 
 // var mongoose = require('mongoose');
 // var Post = require('../models/Posts');  //changed to require
 // var Comment = require('../models/Comments');
+
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
 
 router.get('/posts', function(req, res, next) {
   Post.find(function(err, posts){
@@ -22,6 +26,7 @@ router.get('/posts', function(req, res, next) {
     res.json(posts);
   });
 });
+
 
 router.post('/posts', function(req, res, next) {
   var post = new Post(req.body);
@@ -34,18 +39,18 @@ router.post('/posts', function(req, res, next) {
 });
 
 
-
 router.param('post', function(req, res, next, id) {
   var query = Post.findById(id);
 
   query.exec(function (err, post){
     if (err) { return next(err); }
-    if (!post) { return next(new Error('can\'t find post')); }
+    if (!post) { return next(new Error("can't find post")); }
 
     req.post = post;
     return next();
   });
 });
+
 
 router.param('comment', function(req, res, next, id) {
  var query = Comment.findById(id);
@@ -59,6 +64,7 @@ router.param('comment', function(req, res, next, id) {
  });
 });
 
+
 router.get('/posts/:post', function(req, res, next) {
   req.post.populate('comments', function(err, post) {
     if (err) { return next(err); }
@@ -67,6 +73,35 @@ router.get('/posts/:post', function(req, res, next) {
   });
 });
 
+
+router.delete('/posts/:id', function(req, res, next) {
+  Post.findByIdAndRemove(req.params.id)
+        .then((post) => {
+          res.json({post});
+        })
+        .catch((err) => {
+          if(err) {
+            console.log('Failed to Delete', err);
+            res.json({Error: 'Failed to Delete'});
+          }
+        });
+});
+
+
+router.put('/posts/:id', function(req, res, next) {
+  Post.findByIdAndUpdate(req.params.id, req.body,{new:true})
+      .then((post) => {
+        res.json({post});
+      })
+      .catch((err) => {
+        if(err) {
+          console.log('Failed to Update', err);
+          res.json({Error: 'Failed to Update'});
+        }
+      });
+});
+
+
 router.put('/posts/:post/upvote', function(req, res, next) {
   req.post.upvote(function(err, post){
     if (err) { return next(err); }
@@ -74,6 +109,7 @@ router.put('/posts/:post/upvote', function(req, res, next) {
     res.json(post);
   });
 });
+
 
 router.post('/posts/:post/comments', function(req, res, next) {
   var comment = new Comment(req.body);
@@ -99,5 +135,6 @@ router.put('/posts/:post/comments/:comment/upvote',  function(req, res, next) {
    res.json(comment);
  });
 });
+
 
 module.exports = router;
