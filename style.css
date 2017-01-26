@@ -347,13 +347,12 @@ border-color: #007FFF;
     #download {
   	    text-align: center;
   	    cursor:pointer;
-
+      border-style: double;
   	    padding:3px;
         margin: auto;
         display: block;
         position: relative;
-        font-size: 28px;
-
+        font-size: 38px;
         font-weight: bolder;
         -webkit-text-stroke: 2px blue;
        color: yellow;
@@ -365,6 +364,7 @@ border-color: #007FFF;
            1px 1px 0 #000;
         text-align:center;
         padding: 7px 10px 8px 10px !important;
+      
   	}
   	#download:hover {
   	    color:#fff;
