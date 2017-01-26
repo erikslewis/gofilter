@@ -45,34 +45,34 @@ app.factory('posts', ['$http', function($http) {
         posts: []
     };
     o.getAll = function() {
-        return $http.get('/posts').success(function(data) {
+        return $http.get('https://morning-wildwood-94098.herokuapp.com/posts').success(function(data) {
             angular.copy(data, o.posts);
         });
     };
     o.create = function(post) {
-        return $http.post('/posts', post).success(function(data) {
+        return $http.post('https://morning-wildwood-94098.herokuapp.com/posts', post).success(function(data) {
             o.posts.push(data);
         });
     };
     o.upvote = function(post) {
-        return $http.put('/posts/' + post._id + '/upvote')
+        return $http.put('https://morning-wildwood-94098.herokuapp.com/posts/' + post._id + '/upvote')
             .success(function(data) {
                 post.upvotes += 1;
             });
     };
     o.get = function(id) {
-        return $http.get('/posts/' + id).then(function(res) {
+        return $http.get('https://morning-wildwood-94098.herokuapp.com/posts/' + id).then(function(res) {
             return res.data;
         });
     };
     o.delete = function(post) {
-        return $http.delete('/posts/' + post._id)
+        return $http.delete('https://morning-wildwood-94098.herokuapp.com/posts/' + post._id)
             .success(function(data) {
                 o.getAll();
             });
     };
     o.deleteComment = function(post, comment) {
-        return $http.delete('/posts/' + post._id + '/comments/' + comment._id)
+        return $http.delete('https://morning-wildwood-94098.herokuapp.com/posts/' + post._id + '/comments/' + comment._id)
             .success(function(data) {
                 post.comments = post.comments.filter(function(val) {
                     return val._id != comment._id.toString();
@@ -80,10 +80,10 @@ app.factory('posts', ['$http', function($http) {
             });
     };
     o.addComment = function(id, comment) {
-        return $http.post('/posts/' + id + '/comments', comment);
+        return $http.post('https://morning-wildwood-94098.herokuapp.com/posts/' + id + '/comments', comment);
     };
     o.upvoteComment = function(post, comment) {
-        return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/upvote')
+        return $http.put('https://morning-wildwood-94098.herokuapp.com/posts/' + post._id + '/comments/' + comment._id + '/upvote')
             .success(function(data) {
                 comment.upvotes += 1;
             });
