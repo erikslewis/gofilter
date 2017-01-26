@@ -27,6 +27,8 @@
   <div class="page-header">
     <h1>Flapper News</h1>
   </div>
+  <a href="#/">Welcome</a>
+
 
   <div ng-repeat="post in posts | orderBy:'-upvotes'">
     <span class="glyphicon glyphicon-thumbs-up"
@@ -80,11 +82,13 @@
         {{post.title}}
       </span>
     </h3>
-    <a href="#/posts">Back</a>
+    <a href="#/home">Back</a>
+    <a href="#/">Welcome</a>
+
   </div>
 
   <div ng-repeat="comment in post.comments | orderBy:'-upvotes' ">
-    
+
     <span class="glyphicon glyphicon-thumbs-up"
       ng-click="incrementUpvotes(comment)"></span>
     {{comment.upvotes}} - by {{comment.author}}
@@ -109,5 +113,49 @@
    <button type="submit" class="btn btn-primary">Post</button>
  </form>
 </script>
+
+
+<!-- Welcome Template -->
+
+<script type="text/ng-template" id="/welcome.html">
+
+    <div class="page-header">
+        <h1>Welcome Page</h1>
+    </div>
+
+    <a href="#/home">Posts</a><br>
+    <a href="#/submit">Submit Page</a><br>
+    <a href="#/capture">Capture Page</a><br>
+
+</script>
+
+<!-- Submit Template -->
+
+<script type="text/ng-template" id="/submit.html">
+
+    <div class="page-header">
+        <h1>Submit Page</h1>
+    </div>
+
+    <a href="#/home">Posts</a><br>
+    <a href="#/submit">Submit Page</a><br>
+    <a href="#/capture">Capture Page</a><br>
+
+</script>
+
+<!-- Capture Template -->
+
+<script type="text/ng-template" id="/capture.html">
+
+    <div class="page-header">
+        <h1>Capture Page</h1>
+    </div>
+
+    <a href="#/home">Posts</a><br>
+    <a href="#/submit">Submit Page</a><br>
+    <a href="#/capture">Capture Page</a><br>
+
+</script>
+
 </body>
 </html>

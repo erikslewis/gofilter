@@ -23,8 +23,21 @@ app.config([
                         return posts.get($stateParams.id);
                     }]
                 }
+            })
+            .state('welcome', {
+                url: '/',
+                templateUrl: '/welcome.html'
+            })
+            .state('submit', {
+                url: '/submit',
+                templateUrl: '/submit.html'
+            })
+            .state('capture', {
+                url: '/capture',
+                templateUrl: '/capture.html'
             });
-        $urlRouterProvider.otherwise('home');
+
+        $urlRouterProvider.otherwise('/');
     }
 ]);
 app.factory('posts', ['$http', function($http) {
