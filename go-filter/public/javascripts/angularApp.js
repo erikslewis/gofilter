@@ -99,7 +99,7 @@ $scope.addComment = function(){
   });
   $scope.body = '';
 };
-$scope.incremenUpvotes = function(comment){
+$scope.incrementUpvotes = function(comment){
   posts.upvoteComment(post, comment);
 };
 }]);
