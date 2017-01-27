@@ -53,9 +53,11 @@
     <h1>Filter Examples</h1>
   </div>
 
+<div class="search">
+  <h3> Search By Filter: <input type="text" data-ng-model= "posts.search"></h3>
+</div>
 
-
-  <div class="big2" ng-repeat="post in posts | orderBy:'-upvotes'">
+  <div class="big2" ng-repeat="post in posts |filter: {title:posts.search} | orderBy:'-upvotes'">
       <img src="{{post.link}}" />
     <span class="glyphicon glyphicon-thumbs-up"
       ng-click="incrementUpvotes(post)"></span>
