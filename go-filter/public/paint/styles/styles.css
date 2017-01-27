@@ -22,7 +22,7 @@ body{
 	padding: 0px;
 	padding-top: 30px;
 	background-color:;
-  background-image: url('/Users/Erik/cam-test/img/smartphone-1445489_960_720.jpg');
+  background-image: url('/img/smartphone-1445489_960_720.jpg');
 	font-weight: normal;
 	overflow: hidden;
 }
@@ -82,7 +82,7 @@ input[type="button"]{
 	height: 30px;
 	padding: 5px 5px 5px 36px;
 	margin: 5px 0 10px 0;
-	background: url("/Users/Erik/cam-test/img/title5.jpg") no-repeat 3px 0px;
+	background: url("/img/title5.jpg") no-repeat 3px 0px;
 	background-size: auto 35px;
 	text-decoration: none;
 	font-weight: bold;
@@ -253,7 +253,7 @@ input[type="button"]{
 	padding:0 8px 0 8px;
 }
 .ddsmoothmenu ul li ul li.more > a{
-	background-image: url('../img/right.png');
+	background-image: url('/paint/img/right.png');
 	background-repeat: no-repeat;
 	background-position: 97% 30%;
 }
