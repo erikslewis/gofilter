@@ -15,4 +15,31 @@ The user can
 - Download that photo
 - Submit a photo for filtering(unfinished)
 
+Technology
+- Mongo DB
+- Mongoose
+- Express
+- Angular
+- Node 
+- jQuery
+- html 5
+- CSS
+- Heroku
+- GH-Pages
+- Cors
+
+Unsolved Problems
+- Can't send or get the filter image....Yet
+- No user accounts .... Yet
+- Users cant create there own filter threw the site....Yet
+- Captured photo of yourself cant be clicked and sent to the filter....Yet
+
+Challenges
+- Splitting the front and back end.
+- Git Team Flow.
+- Getting Started.
+- Getting our Templates to work the way we like.
+
+
+
 ![alt tag](/img/ERD.png "ERD")
