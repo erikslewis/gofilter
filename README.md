@@ -2,7 +2,8 @@
 https://erikslewis.github.io/gofilter/
 
 https://github.com/mwb86/filterbackend
-The user can
+
+The user can:
 
 - See all examples of photo filters
 - See a specific photo filter
